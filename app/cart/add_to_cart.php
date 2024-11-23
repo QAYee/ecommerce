@@ -39,50 +39,51 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     
  
-
     try{
     //insert record to database
     $conn = $db->connectDB();
-    
-    /*
-    $sql ="UPDATE products SET products.product_name = :p_product_name,
-                    products.product_description = :p_product_description,
-                    products.category_id = :p_category_id,
-                    products.base_price = :p_base_price,
-                    products.stocks = :p_stocks,
-                    products.unit_price = :p_unit_price,
-                    products.total_price = :p_total_price,
-                    products.updated_at = NOW()
-                    WHERE products.id = :p_id";
+    $sql = "SELECT * from products WHERE products.id = :p_product_id";
+    $stmt = $conn ->prepare($sql);
+    $stmt ->bindParam('p_product_id', $productId);
+    if(!$stmt->execute()){
 
-    $stmt= $conn->prepare($sql);
-    $data = [':p_product_name'        => $productName,
-         ':p_product_description' => $description,
-         ':p_category_id'         => $category,
-         ':p_base_price'          => $basePrice,
-         ':p_stocks'              => $numberOfStocks,
-         ':p_unit_price'          => $unitPrice,
-         ':p_total_price'         => $totalPrice, 
-         ':p_id'                  => $productId ];
+    
+    
+    }
+    $product = $stmt->fetch();
+
+    
+    $computedPrice =($product["unit_price"]* $quantity);
+    
+    $sql ="INSERT INTO carts(user_id,product_id,quantity,unit_price,total_price,created_at,updated_at) 
+    VALUES ( :P_user_id, :P_product_id,:P_quantity, :P_unit_price, :P_total_price,NOW(),NOW())";
+
+    $stmt= $conn->prepare($sql);    
+    $data = [':P_user_id'           => $userId,
+            ':P_product_id'         => $productId,
+            ':P_quantity'           => $quantity,
+            ':P_unit_price'         => $product["unit_price"],
+            ':P_total_price'        => $computedPrice
+            ];
 
          if(!$stmt->execute($data)){
-            $_SESSION["mali"] = "failed to update the reccord";
-            header("location: ".BASE_URL."views/admin/products/edit.php");
+            $_SESSION["mali"] = "failed to add to cart";
+            header("location: ".BASE_URL."views/admin/products/product.php?id=".$productId);
             exit;
 
          }
 
-         $lastId = $productId;
-        */
+        
+        
          
      
 
          
-         
+
          $_SESSION["tama"] = "added to cart successfully";
          header("location: ".BASE_URL."views/admin/products/product.php?id=".$productId);
         exit;
-    
+        
 
         } catch(PDOException $e){
             echo "Connection Failed" . $e->getMessage();
@@ -90,7 +91,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
 
         
-            
+             
 
 }
 

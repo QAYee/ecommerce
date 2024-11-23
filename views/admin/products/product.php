@@ -88,7 +88,7 @@ require_once(ROOT_DIR."includes/navbar.php");
 
                         <!-- Add to Cart Button -->
                         <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-primary btn-lg">Add to Cart</button>
+                            <button type="submit" class="btn btn-primary btn-lg" <?php echo ($product["stocks"] <= 0 ? "disabled" : "" )?>><?php echo ($product["stocks"] <= 0 ? "Soldout" : "Add to Cart" )?></button>
                         </div>
                     </form>
                 </div>

@@ -2,14 +2,21 @@
 
 
 class DatabaseConnect {
+    /*private $host = "localhost";
+    private $database = "ecommerce_msantos";
+    private $dbusername = "msantos";
+    private $dbpassword = "M84nt0s_2024";
+    private $charset    = 'utf8mb4';
+    private $conn = null;*/
+
     private $host = "localhost";
-    private $database = "ecommerce";
+    private $database = "ecommerce2";
     private $dbusername = "root";
     private $dbpassword = "";
     private $charset    = 'utf8mb4';
     private $conn = null;
 
-
+    
     public function connectDB(){
         $dsn = "mysql: host=$this->host;dbname=$this->database;charset=" . $this->charset;
         try {

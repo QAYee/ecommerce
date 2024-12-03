@@ -5,7 +5,7 @@ if(!isset($_SESSION)){
 }
 
 require_once(__DIR__."/../config/Directories.php"); //to handle folder specific path
-include("..\config\DatabaseConnect.php"); //to access database connection
+include("../config/DatabaseConnect.php"); //to access database connection
 
 $db = new DatabaseConnect(); //make a new database instance
 
@@ -108,7 +108,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
      
 
          
-         if (isset($_FILES['productImage2']) && $_FILES['productImage2']['error'] == 0) {
+         if (isset($_FILES['productImage']) && $_FILES['productImage']['error'] == 0) {
             $error = processImage($lastId);
         
             if ($error) {
@@ -131,9 +131,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         
             
 
-}
+    }
 
-function processImage($id){
+    function processImage($id){
     global $db;
     //retrieve $_FILES
     $path         = $_FILES['productImage']['tmp_name']; //actual file on tmp path
@@ -169,5 +169,3 @@ function processImage($id){
     return null;
 }
 
-
-    

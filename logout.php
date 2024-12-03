@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once($_SERVER["DOCUMENT_ROOT"]."/app/config/Directories.php");
-require_once("includes\header.php");
+require_once("includes/header.php");
 
 
 if($_SERVER["REQUEST_METHOD"]=="POST"){
@@ -11,7 +11,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 ?>
     <!-- Navbar -->
     <?php
-require_once("includes\\navbar.php");
+require_once("includes/navbar.php");
 ?>
 
 

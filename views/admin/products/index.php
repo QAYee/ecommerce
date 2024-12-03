@@ -3,7 +3,7 @@
 session_start();
 require_once($_SERVER["DOCUMENT_ROOT"]."/app/config/Directories.php");
 
-require_once(ROOT_DIR."includes\header.php");
+require_once(ROOT_DIR."includes/header.php");
 
 if(isset($_SESSION["mali"])){
     $messErr = $_SESSION["mali"];
@@ -17,7 +17,7 @@ if(isset($_SESSION["tama"])){
 include(ROOT_DIR. "app/product/get_product.php")
 ?>
 <?php
-require_once(ROOT_DIR."includes\\navbar.php");
+require_once(ROOT_DIR."includes/navbar.php");
 ?>
     <!-- page guard  -->
     <?php require_once(ROOT_DIR."views/components/page-guard.php"); ?>

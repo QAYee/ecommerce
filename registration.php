@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once($_SERVER["DOCUMENT_ROOT"]."/app/config/Directories.php");
-require_once("includes\header.php");
+require_once("includes/header.php");
 if(isset($_SESSION["mali"])){
     $messErr = $_SESSION["mali"];
     unset($_SESSION["mali"]);
@@ -15,7 +15,7 @@ if(isset($_SESSION["tama"])){
 
     <!-- Navbar -->
     <?php
-require_once("includes\\navbar.php");
+require_once("includes/navbar.php");
 ?>
 
     <!-- Registration Form -->

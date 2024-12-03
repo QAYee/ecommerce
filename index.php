@@ -1,7 +1,7 @@
 <?php
 require_once($_SERVER["DOCUMENT_ROOT"]."/app/config/Directories.php");
 include(ROOT_DIR. "app/product/get_product.php");
-require_once("includes\header.php");
+require_once("includes/header.php");
 session_start();
 if(isset($_SESSION["mali"])){
     $messErr = $_SESSION["mali"];
@@ -13,7 +13,7 @@ if(isset($_SESSION["tama"])){
 }
 ?>
 <?php
-require_once("includes\\navbar.php");
+require_once("includes/navbar.php");
 ?>
     
 
